@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: timeoff-webserver
+  namespace: timeoff
+  labels:
+    app: timeoff
+spec: 
+  replicas: 2
+  selector:
+    matchLabels:
+      app: timeoff
+  template:
+    metadata:
+      labels:
+        app: timeoff
+    spec:
+      containers:
+      - name: timeoff
+        image: lediegojimenez/timeoff:v1
+        ports:
+        - containerPort: 3000
